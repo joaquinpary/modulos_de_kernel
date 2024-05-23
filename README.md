@@ -53,12 +53,37 @@ Si vamos al directorio `/usr/local/bin/` podemos ver que se instalo correctament
 
 ### Seguridad del Kernel
 
-Una medida que se puede implementar para la seguridad del kernel, es el `Safe Boot`, una caracteristica de seguridad que se encuentran en los sistemas `UEFI` (Unified Extensible Firmware Interface). Esto requiere que exista una cade de confianza, desde lo primero que carga el hardware (el codigo de firmware), hasta lo ultimo que carga el sistema operativo como parte del kernel `los modulos`.
+Una medida que se puede implementar para la seguridad del kernel, es el `Secure Boot`, una caracteristica de seguridad que se encuentran en los sistemas `UEFI` (Unified Extensible Firmware Interface). Esto requiere que exista una cade de confianza, desde lo primero que carga el hardware (el codigo de firmware), hasta lo ultimo que carga el sistema operativo como parte del kernel `los modulos`.
 
-Si el `Safe Boot` se encuentra habilitado, el kernel y todos los modulos del kernel tiene que estar firmados con una clave privada y autenticados con la clave publica correspondiente. Si no estan firmados y autenticados, el sistema no podra treminar el proceso de arranque. De igual manera cuando el sistema este en funcionamiento, tampoco se podran cargar modulos que no esten firmados y autenticados.
+Si el `Secure Boot` se encuentra habilitado, el kernel y todos los modulos del kernel tiene que estar firmados con una clave privada y autenticados con la clave publica correspondiente. Si no estan firmados y autenticados, el sistema no podra treminar el proceso de arranque. De igual manera cuando el sistema este en funcionamiento, tampoco se podran cargar modulos que no esten firmados y autenticados.
 
 ![Img5](/img/img5.png)
-> Error al cargar el modulo al kernel, dado que el modulo no se encuentra firmado y autenticado, y el Safe Boot se encuentra activado
+> Error al cargar el modulo al kernel, dado que el modulo no se encuentra firmado y autenticado, y el Secure Boot se encuentra activado
+
+### Carga de modulo al kernel
+
+Desactivando el `Secure Boot`, el sistema operativo deja cargar el modulo de ejemplo de [GitHub](https://gitlab.com/sistemas-de-computacion-unc/kenel-modules.git)
+
+![Img10](/img/img10.png)
+
+Utilizando `sudo dmesg` que imprime el log del kernel con el `timestamp`, se puede ver el mensaje del codigo del modulo:
+
+![Img11](/img/img11.png)
+![Img12](/img/img12.png)
+
+`lsmod` es un comando que imprime los modulos que se encuentran cargados en el kernel y su tamaño correspondiente:
+
+![Img13](/img/img13.png)
+
+Incluso podemos imprimir con `cat /proc/modules` los modulos con su ubicacion en memoria:
+
+![Img14](/img/img14.png)
+> Si no se agrega `sudo` para permisos de superusuario no imprimira su direccion en memoria
+> mimodulo 12288 0 - Live 0x0000000000000000
+
+Para remover el modulo del kernel se utiliza `sudo rmmod mimodulo`
+
+![Img15](/img/img15.png)
 
 ## Desafio 2
 
