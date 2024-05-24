@@ -1,6 +1,6 @@
 # Trabajo Practico N°4 - Sistemas de Computacion - Modulos de Kernel
 
-## Desafio 1
+## Parte 1
 
 ### Checkinstall
 
@@ -80,13 +80,14 @@ Incluso podemos imprimir con `cat /proc/modules` los modulos con su ubicacion en
 
 ![Img14](/img/img14.png)
 > Si no se agrega `sudo` para permisos de superusuario no imprimira su direccion en memoria
+
 > mimodulo 12288 0 - Live 0x0000000000000000
 
 Para remover el modulo del kernel se utiliza `sudo rmmod mimodulo`
 
 ![Img15](/img/img15.png)
 
-## Desafio 2
+## Parte 2
 
 ### Como empiezan los programas y los modulos
 
@@ -130,9 +131,8 @@ Los tipos que se pueden ver son:
 * `r`: datos de lectura de un modulo
 * `b`: datos no inicializados de un modulo
 
-## Desafio 2
-
 ### Espacio de usuario vs espacio de kernel
+
 El kernel se encarga de administrar el acceso a los recursos, por ejemplo de un disco duro o una memoria. Generalmente los programas compiten por los mismos recursos, es el trabajo del kernel mantener el orden y asegurar que los usuarios no accedan a recursos de forma indiscriminada. Para gestionar esto las CPUs pueden operar en diferentes modos, ofreciendo niveles variables de control del sistema para cada modo.
 
 En la arquitectura Intel 80386 tenemos cuatro modos, conocidos como anillos. Por otro lado, Unix usa solo dos de estos anillos: el anillo 0 "modo supervisor", donde todas las acciones son permitidas y el anillo 3 también llamado "modo usuario".
@@ -147,6 +147,7 @@ La gestión de memoria es fundamental en los sistemas operativos y se divide en 
 Cuando se crea un proceso, el kernel asigna una porción de memoria física para su código, variables, stack, y heap. Este espacio de memoria virtual es único para cada proceso, evitando que unos interfieran con otros. Por ejemplo, una dirección como `0xbffff978` en diferentes procesos apunta a diferentes ubicaciones físicas.
 
 #### Espacio del Kernel
+
 El kernel tiene su propio espacio de memoria, reservado y protegido. Los módulos del kernel comparten este espacio y no tienen uno propio. Esto significa que errores en los módulos pueden afectar gravemente al kernel:
 * Fallos de Segmentación (Segfaults): Un segfault en un módulo del kernel puede derribar el sistema completo.
 * Errores de Desbordamiento: Un error, como un off-by-one, puede sobrescribir datos críticos del kernel, causando inestabilidad o fallos del sistema.
@@ -155,8 +156,8 @@ El kernel tiene su propio espacio de memoria, reservado y protegido. Los módulo
 
 |                       | Fallos de Segmentación      | Errores de Desbordamiento                                            |
 | --------------------- | --------------------------- | -------------------------------------------------------------------- |
-| En espacio de usuario | termina el proceso afectado | puede ejecutar código arbitrario                                     |
-| En espacio del kernel | puede afectar al sistema    | puede modificar datos críticos, afectando la estabilidad del sistema |
+| En espacio de usuario | Termina el proceso afectado | Puede ejecutar código arbitrario                                     |
+| En espacio del kernel | Puede afectar al sistema    | Puede modificar datos críticos, afectando la estabilidad del sistema |
 
 
 La separación entre el espacio de usuario y el del kernel se vuelve crucial para la seguridad del sistema. Los errores de gestión de memoria en los módulos del kernel pueden tener consecuencias graves. 
@@ -181,8 +182,23 @@ Ejemplo:
 crw-rw----  1 root  dial 4, 64 Feb 18 23:34 /dev/ttyS0
 ```
 
+### Difererentes modinfo
+
+```bash
+modinfo mimodulo.ko 
+modinfo /lib/modules/$(uname -r)/kernel/crypto/des_generic.ko
+```
+
+![Img16](/img/img16.png)
+![Img17](/img/img17.png)
+![Img18](/img/img18.png)
+
+La principal diferencia entre los 2 `modinfo` es que `mimodule` no se encuentra firmado en cambio `des_generic` si se encuentra firmado y los terminos son `sig_id`, `signer`, `sig_key`, `sig_hashalgo` y `signature`.
 
 ## Anexo
 
 https://tldp.org/LDP/lkmpg/2.4/html/x437.html
 
+https://www.linode.com/docs/guides/lsmod-and-modinfo-commands-in-linux/
+
+https://access.redhat.com/documentation/es-es/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/signing-kernel-modules-for-secure-boot_managing-kernel-modules
