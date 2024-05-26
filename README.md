@@ -1,5 +1,11 @@
 # Trabajo Practico N°4 - Sistemas de Computacion - Modulos de Kernel
 
+## Integrantes
+
+* Pary Joaquin
+* Colque Santiago
+* Anceloff Jorge
+
 ## Parte 1
 
 ### Checkinstall
@@ -194,6 +200,37 @@ modinfo /lib/modules/$(uname -r)/kernel/crypto/des_generic.ko
 ![Img18](/img/img18.png)
 
 La principal diferencia entre los 2 `modinfo` es que `mimodule` no se encuentra firmado en cambio `des_generic` si se encuentra firmado y los terminos son `sig_id`, `signer`, `sig_key`, `sig_hashalgo` y `signature`.
+
+### Modulos cargados en kernel de cada integrante
+
+Cada integrante genero un `.txt` donde guardo los modulos que estan cargados en kernel:
+
+```bash 
+sudo lsmod > nombre.txt
+```
+
+Para comparar primero se debe remover el titulo de la tabla y luego ordenarlos:
+
+```bash
+awk 'NR==1 {next} {print $1}' nombre.txt > nombre_modules.txt 
+```
+```bash
+sort nombre_modules.txt > nombre_modules_sorted.txt
+```
+
+Esto se hace, ya que de esta forma se reducen la cantidad de diferencias entre modulos que si estan en ambas computadoras pero estan en diferente orden.
+
+Se realiza el `diff`
+
+```bash
+diff integrante1.txt integrante2.txt > diff_integrante1_integrante2
+```
+
+![Img19](/img/img19.png)
+
+La principal diferencia de los modulos cargados en kernel, son aquellos `modulos` relacionados especificamente al hardware, por ejemplo en una de las computadoras posee un procesador `intel` mientras que las otras 2 poseen procesadores `amd`
+
+![Img20](/img/img20.png)
 
 ## Anexo
 

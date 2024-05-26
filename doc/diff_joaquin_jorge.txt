@@ -1,0 +1,176 @@
+0a1
+> 
+1a3
+> acpi_pad
+2a5
+> acpi_thermal_rel
+4a8
+> ahci
+7,9d10
+< amdgpu
+< amd_pmc
+< amdxcp
+11a13
+> blake2b_generic
+14,15d15
+< bridge
+< br_netfilter
+18c18
+< btmtk
+---
+> btrfs
+22d21
+< ccp
+25a25
+> coretemp
+29a30,32
+> dm_log
+> dm_mirror
+> dm_region_hash
+31,32d33
+< drm_buddy
+< drm_display_helper
+34,35d34
+< drm_suballoc_helper
+< drm_ttm_helper
+38d36
+< edac_mce_amd
+39a38
+> fb_sys_fops
+41d39
+< gpu_sched
+43a42,43
+> hid_logitech_dj
+> hid_logitech_hidpp
+49c49,53
+< i2c_piix4
+---
+> i2c_i801
+> i2c_smbus
+> i915
+> icp
+> idma64
+50a55,61
+> int3400_thermal
+> int3403_thermal
+> int340x_thermal_zone
+> intel_cstate
+> intel_lpss
+> intel_lpss_pci
+> intel_powerclamp
+53c64,65
+< iommu_v2
+---
+> intel_soc_dts_iosf
+> intel_tcc_cooling
+55d66
+< irqbypass
+57d67
+< k10temp
+59c69
+< kvm_amd
+---
+> kvm_intel
+60a71
+> libahci
+63d73
+< llc
+67a78,80
+> mei
+> mei_hdcp
+> mei_me
+69,77d81
+< nf_conntrack
+< nf_conntrack_netlink
+< nf_defrag_ipv4
+< nf_defrag_ipv6
+< nf_nat
+< nfnetlink
+< nf_tables
+< nft_chain_nat
+< nft_compat
+80d83
+< nvme_common
+82d84
+< overlay
+86,87d87
+< polyval_clmulni
+< polyval_generic
+88a89,94
+> processor_thermal_device
+> processor_thermal_device_pci_legacy
+> processor_thermal_mbox
+> processor_thermal_rapl
+> processor_thermal_rfim
+> raid6_pq
+101,104d106
+< snd_acp3x_pdm_dma
+< snd_acp3x_rn
+< snd_acp_config
+< snd_acp_pci
+106d107
+< snd_ctl_led
+111a113
+> snd_hda_ext_core
+116,119d117
+< snd_pci_acp3x
+< snd_pci_acp5x
+< snd_pci_acp6x
+< snd_pci_ps
+123,124d120
+< snd_rn_pci_acp3x
+< snd_rpl_pci_acp6x
+129a126
+> snd_soc_acpi_intel_match
+131c128
+< snd_soc_dmic
+---
+> snd_soc_hdac_hda
+133,135c130,131
+< snd_sof_amd_acp
+< snd_sof_amd_rembrandt
+< snd_sof_amd_renoir
+---
+> snd_sof_intel_hda
+> snd_sof_intel_hda_common
+137c133
+< snd_sof_utils
+---
+> snd_sof_pci_intel_icl
+140a137,140
+> soundwire_bus
+> soundwire_cadence
+> soundwire_generic_allocation
+> soundwire_intel
+142c142,145
+< stp
+---
+> spl
+> syscopyarea
+> sysfillrect
+> sysimgblt
+144,145c147
+< uhid
+< uvc
+---
+> usbhid
+156,157c158
+< xfrm_algo
+< xfrm_user
+---
+> x86_pkg_temp_thermal
+159a161
+> xor
+161,163c163,170
+< xt_addrtype
+< xt_conntrack
+< xt_MASQUERADE
+---
+> zavl
+> zcommon
+> zfs
+> zlua
+> znvpair
+> zstd_compress
+> zunicode
+> zzstd

@@ -1,0 +1,62 @@
+2d1
+< acpi_tad
+9a9,11
+> asus_nb_wmi
+> asus_wireless
+> asus_wmi
+42a45
+> hid_asus
+45d47
+< hp_wmi
+54a57
+> ipt_REJECT
+67c70
+< mc
+---
+> mfd_aaeon
+68a72,75
+> mt76
+> mt76_connac_lib
+> mt7921_common
+> mt7921e
+74a82
+> nf_reject_ipv4
+78a87,90
+> nvidia
+> nvidia_drm
+> nvidia_modeset
+> nvidia_uvm
+92,95d103
+< rtw88_8822c
+< rtw88_8822ce
+< rtw88_core
+< rtw88_pci
+97d104
+< serio_raw
+101,102d107
+< snd_acp3x_pdm_dma
+< snd_acp3x_rn
+106d110
+< snd_ctl_led
+131d134
+< snd_soc_dmic
+144,146c147,150
+< uhid
+< uvc
+< uvcvideo
+---
+> typec
+> typec_ucsi
+> ucsi_acpi
+> usbhid
+148,153d151
+< videobuf2_common
+< videobuf2_memops
+< videobuf2_v4l2
+< videobuf2_vmalloc
+< videodev
+< wireless_hotkey
+161a160
+> xt_CHECKSUM
+163a163
+> xt_tcpudp
