@@ -4,7 +4,7 @@
 
 * Pary Joaquin
 * Colque Santiago
-* Anceloff Jorge
+* Angeloff Jorge
 
 ## Parte 1
 
